@@ -1,15 +1,39 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import "./App.css";
 import ComponentePrueba from "./components/ComponentePrueba/ComponentePrueba";
-const usertafa = { nombre: "moustapha", edad: 44 };
+import Form from "./components/Form/Form";
+//----------------------
+const usertafa = { nombre: "moustapha" };
+const usermarta = { nombre: "marta" };
+const userbea = { nombre: "bea" };
+const userlina = { nombre: "lina" };
+const userryan = { nombre: "ryan" };
 function App() {
   return (
     <div className="App">
-      ------------------- <br />
-      Estos son los mejores
-      <ComponentePrueba edad={30} user={usertafa} />
-      --------------------
+      -------------------
+      <br />
+      Router <br />
+      <Form />
+      <BrowserRouter>
+        <Link to="/marta"> Marta</Link>
+        <br />
+        <Link to="/"> tafa</Link>
+
+        <Switch>
+          <Route exact path="/">
+            <ComponentePrueba edad={44} user={usertafa} />
+            <ComponentePrueba edad={30} user={userbea} />
+            <ComponentePrueba edad={27} user={userryan} />
+          </Route>
+          <Route path="/marta">
+            <ComponentePrueba edad={40} user={usermarta} />
+            <ComponentePrueba edad={24} user={userlina} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      Estos son los mejores --------------------
     </div>
   );
 }
